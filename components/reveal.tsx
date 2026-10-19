@@ -2,7 +2,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 
 /** Content is visible without JavaScript. Reveal once; never hide focused content. */
-export function Reveal({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+export function Reveal({ children, className = '', delay = 0, variant = 'rise' }: { children: React.ReactNode; className?: string; delay?: number; variant?: 'rise' | 'curtain' | 'fade' }) {
  const ref = useRef<HTMLDivElement>(null);
  useEffect(() => {
   const node = ref.current;
@@ -21,5 +21,5 @@ export function Reveal({ children, className = '', delay = 0 }: { children: Reac
   preference.addEventListener('change', show);
   return () => { show(); node.removeEventListener('focusin', show); preference.removeEventListener('change', show); };
  }, []);
- return <div ref={ref} className={`reveal ${className}`} style={{ '--reveal-delay': `${delay}ms` } as CSSProperties}>{children}</div>;
+ return <div ref={ref} data-reveal={variant} className={`reveal ${className}`} style={{ '--reveal-delay': `${delay}ms` } as CSSProperties}>{children}</div>;
 }

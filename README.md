@@ -51,3 +51,7 @@ Deploy Vercel: framework Next.js, diretório raiz do repositório, instalação 
 `Reveal` aplica fade e deslocamento de 28px uma única vez, com atraso escalonado nos cards. O conteúdo permanece acessível sem JavaScript e é revelado imediatamente ao receber foco. `ScrollAtmosphere` usa listener passivo e `requestAnimationFrame` para paralaxe decorativa limitada a 14px, sem mover textos ou interceptar a rolagem. Ambos respeitam `prefers-reduced-motion`, inclusive quando a preferência muda durante a sessão.
 
 O Hero usa proporção 16:9 no desktop (altura mínima de 760px para acomodar o conteúdo em telas intermediárias), `object-fit: cover` e foco central. No celular, a fotografia mantém sua proporção original completa, acima do conteúdo editorial.
+
+### Refinamento a partir dos vídeos de referência
+
+A sequência dos dois vídeos foi analisada em quadros distribuídos pelos 13 e 10 segundos de duração: tipografia com recorte, entradas de painéis em sequência e profundidade entre fotografia e conteúdo. A adaptação usa linhas de título mascaradas (atrasos de 90/210ms), painéis com revelação por `clip-path` (1,2s), cards escalonados (160ms) e entrada inicial do Hero. A fotografia recebe paralaxe limitada a 12px e escala de 1,04 para evitar bordas vazias; em celular o movimento da foto é desativado para preservar o enquadramento integral. Não há interceptação de scroll, reprodução dos vídeos de referência ou promessa de equivalência quadro a quadro com demonstrações editadas.
