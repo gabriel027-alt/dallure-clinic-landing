@@ -1,0 +1,8 @@
+import { clinic, whatsappUrl } from '@/lib/clinic';
+import { ContactLink } from './contact-link';
+import { WhatsAppIcon } from './icons';
+import { Reveal } from './reveal';
+export function Footer() {
+ const url = whatsappUrl();
+ return <><section id="contato" className="contact section-pad"><Reveal><p className="eyebrow">O PRIMEIRO PASSO É SEU.</p><h2>Sua beleza tem uma história.<br/><em>Vamos cuidar dela?</em></h2><p>Uma conversa. Um olhar atento. Um plano só seu.</p>{url ? <ContactLink>Iniciar minha avaliação</ContactLink> : <p className="contact-pending">Agendamento em breve. Nosso canal de atendimento será divulgado aqui.</p>}</Reveal></section><footer className="footer section-pad"><div className="footer-main"><a className="wordmark" href="#inicio">dallure<span>CLINIC</span></a><div><p className="eyebrow">ONDE ESTAMOS</p><p>{clinic.city}</p>{clinic.address && <p>{clinic.address}</p>}</div><div><p className="eyebrow">VAMOS CONVERSAR</p>{url ? <a href={url} target="_blank" rel="noopener noreferrer">WhatsApp ↗</a> : <span>Contato em breve</span>}{/^https:\/\/(www\.)?instagram\.com\//.test(clinic.instagram) && <a href={clinic.instagram} target="_blank" rel="noopener noreferrer">Instagram ↗</a>}</div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Dallure Clinic. Todos os direitos reservados.</span><span>BELEZA QUE RESPEITA A SUA ESSÊNCIA.</span><a href="#inicio">Voltar ao topo ↑</a></div></footer><a className="floating-whatsapp" href={url || '#contato'} {...(url ? { target: '_blank', rel: 'noopener noreferrer' } : {})} aria-label={url ? 'Conversar com a clínica no WhatsApp' : 'Consultar disponibilidade de contato'}><WhatsAppIcon/></a></>;
+}
