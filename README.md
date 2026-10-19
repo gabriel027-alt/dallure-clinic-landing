@@ -45,3 +45,9 @@ A triagem usa três perguntas (interesse, prazo e alinhamento com investimento d
 O player HTML5 usa controles nativos, `playsInline`, `preload="none"`, poster original e nenhum autoplay. Adicione o vídeo oficial em `public/videos/metodo-lure.mp4` ou configure `NEXT_PUBLIC_CLINIC_VIDEO_URL` (URL HTTPS ou caminho local). Sem vídeo, aparece um aviso honesto de conteúdo em breve. Os vídeos de Pinterest são referências de design, não vídeos institucionais para publicação.
 
 Deploy Vercel: framework Next.js, diretório raiz do repositório, instalação `npm ci`, build `npm run build`. Configure os contatos reais nas variáveis do projeto Vercel e refaça o deploy. O push não cria uma integração Vercel automaticamente.
+
+## Movimento editorial
+
+`Reveal` aplica fade e deslocamento de 28px uma única vez, com atraso escalonado nos cards. O conteúdo permanece acessível sem JavaScript e é revelado imediatamente ao receber foco. `ScrollAtmosphere` usa listener passivo e `requestAnimationFrame` para paralaxe decorativa limitada a 14px, sem mover textos ou interceptar a rolagem. Ambos respeitam `prefers-reduced-motion`, inclusive quando a preferência muda durante a sessão.
+
+O Hero usa proporção 16:9 no desktop (altura mínima de 760px para acomodar o conteúdo em telas intermediárias), `object-fit: cover` e foco central. No celular, a fotografia mantém sua proporção original completa, acima do conteúdo editorial.
